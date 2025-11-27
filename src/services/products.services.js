@@ -5,9 +5,16 @@ const productos = [
     {id: 4, nombre: "afri", pelo: "suave"},
 ]; 
 
-const getProductsService = () => productos;
-const getProductsServiceId = (id) => {
-    return productos.find((item) => item.id == id)
+import { getAllProducts, getProductById } from "../models/products.model.js";
+
+const getProductsService = async () => {
+    const productos = await getAllProducts();
+    return productos;
+};
+
+const getProductsServiceId = async (id) => {
+    const producto = await getProductById(id);
+    return producto;
 }
 const categorias = [
     {id: 2340, categoria: "MICHA"},

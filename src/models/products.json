@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nombre": "Notebook Lenovo IdeaPad 15",
+        "precio": 699000,
+        "categorias": ["Tecnología", "Computadoras", "Notebooks"]
+    },
+    {
+        "id": 2,
+        "nombre": "Auriculares Bluetooth Sony WH-CH520",
+        "precio": 85000,
+        "categorias": ["Tecnología", "Audio", "Accesorios"]
+    },
+    {
+        "id": 3,
+        "nombre": "Cafetera Oster Programable",
+        "precio": 120000,
+        "categorias": ["Hogar", "Cocina", "Electrodomésticos"]
+    },
+     {
+        "id": 4,
+        "nombre": "Bicicleta Raleigh R29 Mojave 2.0",
+        "precio": 630000,
+        "categorias": ["Movilidad", "Exterior", "Deporte"]
+    }
+]
