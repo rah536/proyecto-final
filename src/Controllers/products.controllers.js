@@ -1,25 +1,36 @@
-import productsService from "../services/products.services.js"
+import productsModel from "../models/products.model.js";
 
 export const getBienvenido = (req, res) => {
     res.send("Bienvenido !!!");
 }
 
 export const getProducts = async(req, res) => {
-    res.json(await productsService.getProductsService());
-}
+    res.json(await productsModel.getAllProducts());
+};
 
-export const getCategorias = (req, res) => {
-    res.json(categorias);
-}
-
-export const getProductsId = async (req, res) => {
-    
+export const getProductById = async(req, res) => {
     const { id } = req.params;
-    const producto = await productsService.getProductsServiceId(id);
-    
-    if(!producto) {
-        res.status(404).json({error: "El producto no existe"});
+    res.json(await productsModel.getProductById(id));
+};
+
+export const CreateProduct = async (req, res) => {
+    if (typeof req.body.name == undefined) {
+        return res.status(422).json({ error: "el nombres es obligatorio" });
     }
-    
-    res.json(producto);
-}
+
+    const { name, price, categories } = req.body;
+    const product = await productsModel.createProduct({ name, price, categories });
+
+    res.status(201).json(product);
+};
+
+export const deleteProduct = async (req, res) => {
+    const { id } = req.params;
+    const deleted = await productsModel.deleteProduct(id);
+
+    if(!deleted){
+        return res.status(404).json({ error: "Not Found" })
+    }
+
+    res.json({ message: "Product deleted" });
+};
